@@ -1,0 +1,18 @@
+D:\IMS\IMS_Application\IMS\IMS.Models\bin\Debug\IMS.Models.dll
+D:\IMS\IMS_Application\IMS\IMS.Models\bin\Debug\IMS.Models.pdb
+D:\IMS\IMS_Application\IMS\IMS.Models\obj\Debug\IMS.Models.csprojAssemblyReference.cache
+D:\IMS\IMS_Application\IMS\IMS.Models\obj\Debug\IMS.Models.csproj.CoreCompileInputs.cache
+D:\IMS\IMS_Application\IMS\IMS.Models\obj\Debug\IMS.Models.dll
+D:\IMS\IMS_Application\IMS\IMS.Models\obj\Debug\IMS.Models.pdb
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\bin\Debug\IMS.Models.dll
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\bin\Debug\IMS.Models.pdb
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.csproj.AssemblyReference.cache
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.csproj.CoreCompileInputs.cache
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.dll
+E:\IMS Project\Final Solution\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.pdb
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\bin\Debug\IMS.Models.dll
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\bin\Debug\IMS.Models.pdb
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.csproj.AssemblyReference.cache
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.dll
+C:\Users\DELL\Downloads\IMS 8\IMS\IMS.Models\obj\Debug\IMS.Models.pdb

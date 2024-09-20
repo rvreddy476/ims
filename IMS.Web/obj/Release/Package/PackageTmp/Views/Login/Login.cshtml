@@ -1,0 +1,98 @@
+﻿@model IMS.Models.IMS_Users
+@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+
+<div class="container mainlogin">
+    <div class="row">
+        <div class="login-mid-panel col-lg-8 col-md-8 col-xs-12 col-sm-12">
+            <br />
+
+            <div class="login-form">
+                <h4>Sign in to</h4>
+
+                <div class="panel-body vendor-panel">
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.userEmail, new { htmlAttributes = new { @id = "userEmail", @class = "form-control userrounded login-border", placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.userEmail, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control userrounded login-border", placeholder = "Password", type = "password" } })
+                                <div class="error-message">
+                                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="error" id="error" style="display:none; color:red;">Invalid Email and Password</p>
+
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btnlogin btn btn-default login-border" id="submit" name="submit"  style="margin-left: 12%;" />
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+
+<script type="text/javascript">
+   var count;
+var userEmail;
+
+
+    $('#submit').click(function (e) {
+    debugger;
+    e.preventDefault();
+    userEmail = $('#userEmail').val();
+    var userPassword = $('#userPassword').val();
+
+    $.ajax({
+        url: "@Url.Action("GetLDAPConnection")",
+        method: "GET",
+        data: { "userEmail": userEmail, "userPassword": userPassword },
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data);
+
+            if (data == 10) {
+                $('.error').hide();
+                $('.blockError').hide();
+                location.href = '@Url.Action("WelcomeUser", "Login")?uemail=' + userEmail;
+
+            }
+
+            else if (data == 11) {
+                $('.error').show();
+                return false;
+
+            }
+        }
+    });
+
+})
+
+</script>

@@ -1,0 +1,225 @@
+﻿@model IEnumerable<IMS.Models.IMSEntity>
+
+@{
+    string role = ViewBag.role;
+    string empid = ViewBag.empid;
+    string dept = ViewBag.department;
+    string location = ViewBag.location;
+    string GatepassID = ViewBag.GatepassID;
+   
+
+
+
+    ViewBag.Title = "GatepassDetails";
+    Layout = "~/Views/Shared/_Layout_IMS.cshtml";
+}
+
+<h2>InwardDetails</h2>
+<link href="~/assets/css/custom.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+    <div class="card" style="margin-left:-50px;">
+        <div class="card-body">
+
+
+            <input type="hidden" value="@GatepassID" id="GatepassID" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-header">
+                        Gatepass Details
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="col-lg-2">Gatepass Number</th>
+                                    <th class="col-lg-2">Location</th>
+                                    <th class="col-lg-2">Gatepass Type</th>
+                                    <th class="col-lg-2">Expected DateofReturn</th>
+                                    <th class="col-lg-2">Department</th>
+                                    <th class="col-lg-2">Gatepass Datetime</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                @foreach (var item in Model)
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.Gatepass_Number)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.Location)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.GatepassType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.Expected_DateofReturn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.userDepartmentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.Gatepass_DateTime)
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+
+                        <hr />
+                        <table>
+                            <thead>
+                                <tr>
+                                    @if (ViewBag.Category == "External")
+                                    {
+                                        <th class="col-lg-2">Sender Name</th>
+                                        <th class="col-lg-2">Receiver Name</th>
+                                        <th class="col-lg-2">Receiver Address</th>
+                                        <th class="col-lg-2">Receiver Contact</th>
+                                        <th class="col-lg-2">Receiver Email</th>
+                                    }
+                                    else
+                                    {
+                                        <th class="col-lg-2">TO Office</th>
+                                        <th class="col-lg-2">From Office</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tr>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.GatePass_Category == "External")
+                                    {
+                                        <td>
+
+                                            @Html.DisplayFor(modelitem => item.SenderName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.ReceiverName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.ReceiverAddress)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.ReceiverContact)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.ReceiverEmail)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.TO_Office)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelitem => item.From_Office)
+                                        </td>
+
+                                    }
+                                }
+                            </tr>
+                        </table>
+
+                        <hr />
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="col-lg-2">STP/SEZ Bonded Item </th>
+                                    <th class="col-lg-2">Reason</th>
+
+                                </tr>
+                            </thead>
+                            <tr>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.STP_Bonded_Item == true)
+                                    {
+                                        <td>STP</td>
+                                    }
+                                    else if (item.SEZ_Bonded_Item == true)
+                                    {
+                                        <td>SEZ</td>
+                                    }
+                                    else
+                                    {
+                                        <td>-</td>
+                                    }
+                                    <td>
+                                        @Html.DisplayFor(modelitem => item.Reason)
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+                        <hr />
+                        <table>
+                            <thead>
+                                <tr>                                  
+
+                                    <th class="col-lg-2">Material Name</th>                                   
+                                    <th class="col-lg-2">Quantity</th>
+                                    <th class="col-lg-2">Serial Number</th>
+                                    <th class="col-lg-2">Model Number</th>
+                                    <th class="col-lg-2">Remarks</th>                                   
+                                    <th class="col-lg-2">Status</th>
+
+
+                                </tr>
+                            </thead>
+                            @{
+                                string gpvid = ViewBag.GatepassID;
+
+                                IMS.Entities.ServiceVMSEntities context21 = new IMS.Entities.ServiceVMSEntities();
+                                if (ViewBag.expensenature == "capex")
+                                {
+
+                                    var projectdetails1 = from t in context21.OutMaterials
+                                                          where t.GatepassID == gpvid
+                                                          select new { t.MaterialName, t.Quantity,t.Serial_Number,t.Model_Number,t.Out_Status,t.Remarks};
+                                    var ii = projectdetails1.Count();
+                                    foreach (var item in projectdetails1)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.MaterialName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.Quantity)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.Serial_Number)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.Model_Number)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.Remarks)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelitem => item.Out_Status)
+                                            </td>
+
+                                           
+                                        </tr>
+                                    }
+
+                                }
+                               
+
+                                }
+
+                            }
+
+                        </table>
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+
+

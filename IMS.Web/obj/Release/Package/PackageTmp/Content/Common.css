@@ -1,0 +1,49 @@
+﻿
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border-top: 1px solid #97a2b2;
+}
+    footer p {
+        margin-bottom:0;
+        text-align:center;
+    }
+    .open>.dropdown-menu.pull-right{
+    /*margin-top: 40px;*/
+    display: block;
+    padding: 10px;
+}
+.abc
+{
+    font-size: 20px !important;
+    font-family: 'Segoe UI' !important;
+}
+
+.password{
+        padding-top: 90px;
+}
+.elementToFadeInAndOut {
+ 
+                animation: fadein 2s;
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/*.fa-power-off:before {
+    padding-left: 118px !important;
+    content: "\f011";
+}*/
+
+
+.noScoll{
+    overflow-y:hidden; 
+}
